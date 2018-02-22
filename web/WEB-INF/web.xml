@@ -4,13 +4,25 @@
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>ServletsControlls.loginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>incidentesServlts</servlet-name>
+        <servlet-class>ServletsControlls.incidentesServlts</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>incidentesServlts</servlet-name>
+        <url-pattern>/incidentesServlts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <context-param>
+        <param-name>com.sun.faces.writeStateAtFormEnd</param-name>
+        <param-value>false</param-value>
+    </context-param>
 </web-app>

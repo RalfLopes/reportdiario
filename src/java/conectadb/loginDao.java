@@ -5,10 +5,12 @@
  */
 package conectadb;
 
+import dados.Funcionario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 /**
  *
@@ -23,7 +25,7 @@ public class loginDao extends conectadb {
         String senha = "";
         String login = "";
 
-        String sql = "SELECT * FROM logon where id='" + 2+"'";
+        String sql = "SELECT * FROM logon where usuario='"+func.login+"'";
         conn = conectadb.conetaBanco();
         try {
 
@@ -36,9 +38,13 @@ public class loginDao extends conectadb {
                 //Retrieve by column name
                 login = rs.getString("usuario");
                 senha = rs.getString("senha");
-
+                func.setNome(rs.getString("nome"));
+                func.setId(rs.getInt("id"));
                 //Display values
                 System.out.print("User trazido do banco: " + login);
+                System.out.print("Nome trazido do banco: " + func.getNome());
+                System.out.print("id trazido do banco: " + func.getId());
+                
             }
 
             // EXECUTAR CONSULTA

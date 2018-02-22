@@ -5,13 +5,12 @@
  */
 package ServletsControlls;
 
-import conectadb.Funcionario;
+import dados.Funcionario;
 import conectadb.loginDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,15 +45,7 @@ public class loginServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
 
-            doPost(request, response);
-            if (acesso == true) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("dashBoard.jsp");
-                dispatcher.forward(request, response);
-            } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-                dispatcher.forward(request, response);
-            }
-            out.println("</body>");
+                        out.println("</body>");
             out.println("</html>");
         }
     }
@@ -85,27 +76,31 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
         Funcionario f = new Funcionario();
-        loginDao login = new loginDao();
+            loginDao login = new loginDao();
 
-        f.setLogin(request.getParameter("login"));
+            f.setLogin(request.getParameter("login"));
 
-        System.out.println("o nome da tela é :" + f.getLogin());
+            System.out.println("o nome da tela é :" + f.getLogin());
 
-        processRequest(request, response);
+            try {
+                if (login.logar(f) == true) {
+                    System.out.println("acesso realizado com sucesso");
 
-        try {
-            if (login.logar(f) == true) {
-                System.out.println("acesso realizado com sucesso");
-                acesso = true;
+                    request.getSession().setAttribute("usuario", f.getNome());
+                    response.sendRedirect("dashBoard.jsp");
 
-            } else {
-                System.out.println("Usuario não autorizado");
+                } else {
+                    System.out.println("Usuario não autorizado");
+                      response.sendRedirect("index.jsp");
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            processRequest(request, response);
+
+
 
     }
 
