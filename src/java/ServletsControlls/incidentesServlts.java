@@ -39,7 +39,7 @@ public class incidentesServlts extends HttpServlet {
             out.println("<title>Servlet incidentesServlts</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet incidentesServlts at " + request.getContextPath() + "</h1>");
+            
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,6 +58,8 @@ public class incidentesServlts extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+
     }
 
     /**
@@ -71,12 +73,14 @@ public class incidentesServlts extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
+        processRequest(request, response);          
         Sistema sist= new Sistema();
         
-        sist.setSitema(request.getParameter("sistema"));
-        System.out.println("saida dash"+ sist.getSitema());
+        System.out.println("retorno "+ request.getParameter("ocorrencia"));
+        System.out.println("retorno "+ request.getParameter("sistema"));
+        System.out.println("retorno "+ request.getParameter("hora"));
+        System.out.println("retorno "+ request.getParameter("obs"));
+   
     }
 
     /**

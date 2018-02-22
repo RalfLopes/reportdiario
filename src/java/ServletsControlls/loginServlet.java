@@ -41,11 +41,12 @@ public class loginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+             
 
             out.println("</head>");
             out.println("<body>");
 
-                        out.println("</body>");
+            out.println("</body>");
             out.println("</html>");
         }
     }
@@ -76,31 +77,29 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Funcionario f = new Funcionario();
-            loginDao login = new loginDao();
+        loginDao login = new loginDao();
 
-            f.setLogin(request.getParameter("login"));
+        f.setLogin(request.getParameter("login"));
 
-            System.out.println("o nome da tela é :" + f.getLogin());
+        System.out.println("o nome da tela é :" + f.getLogin());
 
-            try {
-                if (login.logar(f) == true) {
-                    System.out.println("acesso realizado com sucesso");
+        try {
+            if (login.logar(f) == true) {
+                System.out.println("acesso realizado com sucesso");
 
-                    request.getSession().setAttribute("usuario", f.getNome());
-                    response.sendRedirect("dashBoard.jsp");
+                request.getSession().setAttribute("usuario", f.getNome());
+                response.sendRedirect("dashBoard.jsp");
 
-                } else {
-                    System.out.println("Usuario não autorizado");
-                      response.sendRedirect("index.jsp");
-                }
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } else {
+                System.out.println("Usuario não autorizado");
+                response.sendRedirect("index.jsp");
             }
-            processRequest(request, response);
-
-
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        processRequest(request, response);
 
     }
 
