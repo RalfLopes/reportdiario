@@ -11,21 +11,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 /**
  *
  * @author t7249320
  */
 public class loginDao extends conectadb {
 
-    public boolean logar(Funcionario func) throws ClassNotFoundException {
+    public int logar(Funcionario func) throws ClassNotFoundException {
         // VARIAVEL ONDE SE PREPARA A CONFIRMAÇÃO NO BANCO ( STATEMENT == CONFIRMAÇÃO )
         Statement stm = null;
         Connection conn = null;
         String senha = "";
         String login = "";
 
-        String sql = "SELECT * FROM logon where usuario='"+func.login+"'";
+        String sql = "SELECT * FROM logon where usuario='" + func.getLogin() + "'";
         conn = conectadb.conetaBanco();
         try {
 
@@ -39,12 +38,11 @@ public class loginDao extends conectadb {
                 login = rs.getString("usuario");
                 senha = rs.getString("senha");
                 func.setNome(rs.getString("nome"));
-                func.setId(rs.getInt("id"));
-                //Display values
-                System.out.print("User trazido do banco: " + login);
-                System.out.print("Nome trazido do banco: " + func.getNome());
-                System.out.print("id trazido do banco: " + func.getId());
                 
+                func.setNivel(rs.getInt("nivel"));
+                //Display values
+            
+
             }
 
             // EXECUTAR CONSULTA
@@ -57,10 +55,13 @@ public class loginDao extends conectadb {
             System.out.println("varivel nula" + ex.getMessage());
 
         }
-        if (login.equalsIgnoreCase(func.getLogin()) && (senha.equalsIgnoreCase("123"))) {
-            return true;
+        if (login.equalsIgnoreCase(func.getLogin()) && (senha.equalsIgnoreCase(func.getSenha())) && (func.getNivel() == 1)) {
+            return 1;
+        }
+        if (login.equalsIgnoreCase(func.getLogin()) && (senha.equalsIgnoreCase(func.getSenha())) && (func.getNivel() == 2)) {
+            return 2;
         } else {
-            return false;
+            return 0;
         }
 
     }

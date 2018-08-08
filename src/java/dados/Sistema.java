@@ -5,15 +5,85 @@
  */
 package dados;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author t7249320
  */
 public class Sistema {
-    public Integer id;
-    public String sitema;
-    public String ocorrencia;
-    public String Observações;
+
+    private Integer id;
+    private String sistema;
+
+    public List<String> getObs() {
+        return obs;
+    }
+
+    public void setObs(List<String> obs) {
+        this.obs = obs;
+    }
+    private String ocorrencia;
+    private String Observações;
+    private String abertura;
+    private String fechamento;
+    private String horaI;
+    private String horaF;
+    private String volume;
+
+    public String getHoraI() {
+        return horaI;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public void setHoraI(String horaI) {
+        this.horaI = horaI;
+    }
+
+    public String getHoraF() {
+        return horaF;
+    }
+
+    public void setHoraF(String horaF) {
+        this.horaF = horaF;
+    }
+    private String status;
+    private int chamado;
+    private List<String> obs = new ArrayList<>();
+
+    public String getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
+    }
+
+    public int getChamado() {
+        return chamado;
+    }
+
+    public void setChamado(int chamado) {
+        this.chamado = chamado;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+  
 
     public String getOcorrencia() {
         return ocorrencia;
@@ -31,20 +101,28 @@ public class Sistema {
         this.Observações = Observações;
     }
 
-    public Integer getId() {
-        return id;
+    public String getAbertura() {
+        return abertura;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAbertura(String abertura) {
+        this.abertura = abertura;
     }
 
-    public String getSitema() {
-        return sitema;
+    public String getFechamento() {
+        return fechamento;
     }
 
-    public void setSitema(String sitema) {
-        this.sitema = sitema;
+    public void setFechamento(String fechamento) {
+        this.fechamento = fechamento;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

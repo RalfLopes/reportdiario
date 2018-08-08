@@ -1,0 +1,62 @@
+#logo_pages{
+
+    height: 60px;   
+}
+.inciText{
+    text-align: center;
+    padding: 10px;
+    margin-top: 3px;
+}
+#rel{
+    margin-top: 50px;
+    position: relative;
+}
+#cha{
+    height:25px;
+}
+#dado{
+
+    text-align: center;
+    font-size: 25px;
+}
+#home{
+    color: white;
+
+
+}
+#updates{
+
+    margin: 10px;
+}
+
+#mteste{
+
+    width:35%;
+
+}
+
+#intern{
+
+}
+
+#btnRel{
+    margin-left: 90%;
+
+}
+
+#nome{
+    margin-top:15px;
+    color: #ffffff;
+    padding-left: 5px;
+}
+#pesq{
+    margin-top:20px;
+}
+#sair{
+    
+padding-left: 5px
+ 
+}
+#iconeSair{
+       margin-right:30px;
+}

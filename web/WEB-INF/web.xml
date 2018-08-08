@@ -8,6 +8,42 @@
         <servlet-name>incidentesServlts</servlet-name>
         <servlet-class>ServletsControlls.incidentesServlts</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>testeServlets</servlet-name>
+        <servlet-class>ServletsControlls.testeServlets</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>relatorioServlet</servlet-name>
+        <servlet-class>ServletsControlls.relatorioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cadUserServlet</servlet-name>
+        <servlet-class>ServletsControlls.cadUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>incidentDetailServlet</servlet-name>
+        <servlet-class>ServletsControlls.incidentDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>fechaIncidenteServlet</servlet-name>
+        <servlet-class>ServletsControlls.fechaIncidenteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Incidentes</servlet-name>
+        <servlet-class>ServletsControlls.ExtractionExcelPaternServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>pesquisaServlet</servlet-name>
+        <servlet-class>ServletsControlls.pesquisaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>relatorioPesquisaServlet</servlet-name>
+        <servlet-class>ServletsControlls.relatorioPesquisaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>ServletsControlls.UpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -15,6 +51,42 @@
     <servlet-mapping>
         <servlet-name>incidentesServlts</servlet-name>
         <url-pattern>/incidentesServlts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testeServlets</servlet-name>
+        <url-pattern>/testeServlets</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>relatorioServlet</servlet-name>
+        <url-pattern>/relatorioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cadUserServlet</servlet-name>
+        <url-pattern>/cadUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>incidentDetailServlet</servlet-name>
+        <url-pattern>/incidentDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fechaIncidenteServlet</servlet-name>
+        <url-pattern>/fechaIncidenteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Incidentes</servlet-name>
+        <url-pattern>/ExtractionExcelPaternServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pesquisaServlet</servlet-name>
+        <url-pattern>/pesquisaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>relatorioPesquisaServlet</servlet-name>
+        <url-pattern>/relatorioPesquisaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/UpdateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

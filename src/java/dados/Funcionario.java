@@ -11,11 +11,20 @@ package dados;
  */
 public class Funcionario {
 
-    public String nome = "";
-    public String torre = "";
-    public String login = "";
-    public String senha = "";
-    public Integer id;
+    private String nome = "";
+    private String torre = "";
+    private String login = "";
+    private String senha = "";
+    private Integer id;
+    private Integer nivel;
+
+    public Integer getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
 
     public Integer getId() {
         return id;

@@ -1,10 +1,9 @@
 package conectadb;
 
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,8 +19,10 @@ public abstract class conectadb {
         String driver = "com.mysql.jdbc.Driver"; //Classe do driver JDBC
         String str_conn = "jdbc:mysql://localhost:3306/hitss" + "?useSSL=true";  //URL de conexão
         String usuario = "root"; //Usuário do banco
-        String senha = "Micro123"; //Senha de conexão
+        String senha = "S!ST&M@DMIN"; //Senha de conexão
+        Charset utf8charset = Charset.forName("UTF-8");
         Class.forName(driver);//Carrega o driver
+        
         Connection conn = null;
         try {
             conn = (Connection) DriverManager.getConnection(str_conn, usuario, senha);

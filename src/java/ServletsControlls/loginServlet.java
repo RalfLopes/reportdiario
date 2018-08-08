@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jboss.weld.servlet.SessionHolder;
 
 /**
  *
@@ -37,17 +38,8 @@ public class loginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-             
-
-            out.println("</head>");
-            out.println("<body>");
-
-            out.println("</body>");
-            out.println("</html>");
+            
+        
         }
     }
 
@@ -80,22 +72,34 @@ public class loginServlet extends HttpServlet {
 
         Funcionario f = new Funcionario();
         loginDao login = new loginDao();
-
+        request.setAttribute("acesso", null);
         f.setLogin(request.getParameter("login"));
-
-        System.out.println("o nome da tela é :" + f.getLogin());
-
+        f.setSenha(request.getParameter("senha"));
+        
+        
         try {
-            if (login.logar(f) == true) {
-                System.out.println("acesso realizado com sucesso");
+            if (login.logar(f) == 1) {
+                request.setAttribute("tipo", "1");
+                
+                 request.setAttribute("user", f.getNome());
+                 request.setAttribute("log", f.getLogin());
+                
+            request.getRequestDispatcher("mantemLog.jsp").forward(request, response);
 
-                request.getSession().setAttribute("usuario", f.getNome());
-                response.sendRedirect("dashBoard.jsp");
+                
+            } else if (login.logar(f) == 2) {
+               request.setAttribute("tipo", "2");
+                
+                 request.setAttribute("user", f.getNome());
+                 request.setAttribute("log", f.getLogin());
+
+                request.getRequestDispatcher("mantemLog.jsp").forward(request, response);
 
             } else {
                 System.out.println("Usuario não autorizado");
                 response.sendRedirect("index.jsp");
             }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
